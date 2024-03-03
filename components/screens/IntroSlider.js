@@ -55,14 +55,11 @@ export default class IntroSlider extends React.Component {
   }
 
   _onDone = () => {
-    // User finished the introduction. Navigate to the 'Home' screen or execute your logic.
-    // Replace 'Home' with the component or route you want to navigate to.
     this.props.navigation.navigate('Home');
   }
 
   render() {
     if (this.state.showRealApp) {
-      // Replace <Home /> with the component you want to render after the introduction.
       return <Home />;
     } else {
       return <AppIntroSlider renderItem={this._renderItem} data={slides} onDone={this._onDone} />;

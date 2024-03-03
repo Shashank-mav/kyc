@@ -163,7 +163,6 @@ const Home = ({ navigation, route }) => {
         if (userDocSnapshot.exists()) {
           const userData = userDocSnapshot.data();
 
-          // Assuming Aadhar details are directly in the user document
           const aadharDetails = {
             aadharName: userData?.aadharName || '',
             aadharNumber: userData?.aadharNumber || '',
@@ -200,11 +199,9 @@ const Home = ({ navigation, route }) => {
         if (userDocSnapshot.exists()) {
           const userData = userDocSnapshot.data();
 
-          // Assuming PAN details are directly in the user document
           const panDetails = {
             panName: userData?.panName || '',
             panNumber: userData?.panNumber || '',
-            // Add more fields if needed
           };
 
           if (panDetails) {
@@ -438,7 +435,7 @@ const styles = StyleSheet.create({
     padding:5,
     alignItems: 'center',
     justifyContent: "flex-start",
-    marginBottom: 20, // Adjust the margin based on your design
+    marginBottom: 20,
   },
 
   card: {

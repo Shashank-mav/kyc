@@ -26,7 +26,7 @@ const Verify = ({ navigation }) => {
     const fetchUserDetails = async () => {
       try {
         const db = getFirestore();
-        const userUID = auth.currentUser.uid; // Assuming Firebase authentication is set up
+        const userUID = auth.currentUser.uid; 
 
         const userDocRef = doc(db, 'Users', userUID);
         const userDocSnapshot = await getDoc(userDocRef);
@@ -56,7 +56,6 @@ const Verify = ({ navigation }) => {
     };
 
     fetchUserDetails();
-    // console.log("adhar&pan name",aadharName,panName);
   }, [auth]);
 
   useEffect(() => {
@@ -67,7 +66,6 @@ const Verify = ({ navigation }) => {
     if (countdown === 0) {
       clearInterval(timer);
 
-      // Check if Aadhar name matches PAN name
       if (aadharDetails.aadharName.trim().toLowerCase() === panDetails.panName.trim().toLowerCase()) {
         console.log('Verification Success');
         setVerificationStatus('Success');
@@ -86,7 +84,6 @@ const Verify = ({ navigation }) => {
   }, [countdown, navigation, aadharDetails.aadharName, panDetails.panName]);
 
   useEffect(() => {
-    // Update Firebase document with the verification status
     const updateVerificationStatus = async () => {
       try {
         const db = getFirestore();
@@ -99,13 +96,12 @@ const Verify = ({ navigation }) => {
       }
     };
 
-    // Only update when the verification status changes
     if (verificationStatus !== 'pending') {
       updateVerificationStatus();
     }
   }, [auth, verificationStatus]);
 
-  const progress = 1 - countdown / 10; // Calculate progress for the Progress.Bar
+  const progress = 1 - countdown / 10;
 
   return (
     <SafeAreaView style={styles.container}>

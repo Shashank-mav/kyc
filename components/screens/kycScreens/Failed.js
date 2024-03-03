@@ -29,7 +29,6 @@ const Failed = ({ navigation }) => {
         <TouchableOpacity
           style={styles.returnButton}
           onPress={() => {
-            // Update the verification status in the Home screen when the button is pressed
             navigation.navigate('Home', { verificationStatus: 'Failed' });
           }}
         >

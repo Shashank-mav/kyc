@@ -33,7 +33,6 @@ const Aadhar = ({ navigation }) => {
       console.log(user);
     });
 
-    // Clean up the subscription when the component unmounts
     return () => unsubscribe();
   }, [auth]);
 
@@ -60,7 +59,6 @@ const Aadhar = ({ navigation }) => {
         contactNumber: contactNumber,
       });
 
-      // Navigate to home screen or perform any other actions
       navigation.navigate('Home', {
         aadharDetails: {
           aadharName,
@@ -89,7 +87,7 @@ const Aadhar = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      
+
     <View style={styles.formContainer}>
       <Text style={styles.heading}>Aadhar Verification</Text>
 
@@ -204,7 +202,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 16,
   },
-  // Camera styles
   cameraContainer: {
     width: '100%',
     aspectRatio: 4 / 4,
@@ -222,7 +219,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: 'center',
     marginTop: 10,
-    alignSelf: 'center', // Center the capture button
+    alignSelf: 'center',
   },
   captureButtonText: {
     color: '#fff',
@@ -234,7 +231,7 @@ const styles = StyleSheet.create({
     height: 250,
     marginTop: 10,
     borderRadius: 10,
-    alignSelf: 'center', // Center the photo preview
+    alignSelf: 'center',
   },
 });
 

@@ -37,12 +37,10 @@ const Login = ({navigation}) => {
 
   const checkAutoLogin = async () => {
     try {
-      // Check if the user is already logged in using stored credentials
       const storedEmail = await AsyncStorage.getItem('userEmail');
       const storedPassword = await AsyncStorage.getItem('userPassword');
 
       if (storedEmail && storedPassword) {
-        // Auto-login the user using stored credentials
         await signInWithEmailAndPassword(auth, storedEmail, storedPassword);
         navigation.navigate('Home');
       }
@@ -56,23 +54,17 @@ const Login = ({navigation}) => {
   const handleLogin = async () => {
     try {
       setIsProcessing(true);
-      // Authenticate the user with Firebase
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       await AsyncStorage.setItem('userEmail', email);
       await AsyncStorage.setItem('userPassword', password);
-      // Check if login is successful
       if (userCredential.user) {
-        // Login successful, navigate to the 'Home' screen
         navigation.navigate('Home');
       } else {
-        // Login unsuccessful, handle accordingly (show an alert, etc.)
         alert('Login failed. Please check your email and password.');
       }
     } catch (error) {
-      // Handle login error
       let errorMessage = 'An error occurred while logging in. Please try again.';
 
-    // Customize error messages based on the error code
     if (error.code === 'auth/invalid-email') {
       errorMessage = 'Invalid email address. Please check and try again.';
     } else if (error.code === 'auth/user-not-found') {
@@ -81,7 +73,6 @@ const Login = ({navigation}) => {
       errorMessage = 'Incorrect password. Please check and try again.';
     }
 
-    // Display user-friendly error message
     alert(errorMessage);
     }finally {
       setIsProcessing(false);
@@ -94,11 +85,7 @@ const Login = ({navigation}) => {
     <SafeAreaView style={{flex: 1, justifyContent: 'center'}}>
       <View style={{paddingHorizontal: 25}}>
         <View style={{alignItems: 'center'}}>
-          {/* <LoginSVG
-            height={300}
-            width={300}
-            style={{transform: [{rotate: '-5deg'}]}}
-          /> */}
+
         </View>
 
         <Text
@@ -192,7 +179,6 @@ const Login = ({navigation}) => {
     borderRadius: 10,
     marginBottom: 30,
     marginHorizontal: 5,
-    // Add more inline styles as needed
   }}>
      {isProcessing ? (
         <ActivityIndicator size="small" color="#fff" style={{ marginRight: 10 }} />

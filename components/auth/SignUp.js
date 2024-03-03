@@ -42,13 +42,11 @@ const SignUp = ({ navigation }) => {
   const auth = getAuth();
   const [isProcessing, setIsProcessing] = useState(false);
 
-  // todo:
 
   const handleSignUp = async () => {
     setIsProcessing(true);
     try {
       if (password !== confirmPassword) {
-        // Passwords do not match, show an alert
         alert("Password and Confirm Password do not match");
         return;
       }
@@ -57,7 +55,6 @@ const SignUp = ({ navigation }) => {
         return;
       }
 
-      // Sign up the user
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const currentUser = userCredential.user;
 
@@ -66,7 +63,6 @@ const SignUp = ({ navigation }) => {
         return;
       }
 
-      // Store user data in the "Users" collection in Firestore using the user's UID as the document ID
       const db = getFirestore(app);
       const userDocRef = doc(db, 'Users', currentUser.uid);
 
@@ -76,10 +72,8 @@ const SignUp = ({ navigation }) => {
         dob: dobLabel,
       });
 
-      // Navigate to the IntroSlider or perform any other actions
       navigation.navigate('IntroSlider');
     } catch (error) {
-      // Handle signup error
       alert(`Error signing up: ${error.message}`);
     } finally{
       setIsProcessing(false);
@@ -295,7 +289,6 @@ const SignUp = ({ navigation }) => {
     borderRadius: 10,
     marginBottom: 30,
     marginHorizontal: 5,
-    // Add more inline styles as needed
   }}>
      {isProcessing ? (
         <ActivityIndicator size="small" color="#fff" style={{ marginRight: 10 }} />
